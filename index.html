@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ko" data-lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Synth — 음악을 틀면 배경화면이 영상이 됩니다</title>
+<meta name="description" content="맥에서 Spotify나 Apple Music으로 음악을 듣는 동안 곡에 맞는 영상을 배경화면으로 깔아 주는 무료 앱. Free Mac app that turns your wallpaper into video while music plays.">
+<meta property="og:title" content="Synth">
+<meta property="og:description" content="음악을 틀면 배경화면이 영상이 됩니다 · Your wallpaper becomes video while music plays.">
+<meta property="og:type" content="website">
+<meta name="color-scheme" content="dark">
+<link rel="stylesheet" href="style.css">
+<script>
+  // 앱과 같은 규칙: 시스템 언어가 한국어가 아니면 영어. 고른 것은 기억한다.
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem("lang"); } catch (e) {}
+    var lang = saved || ((navigator.language || "en").toLowerCase().indexOf("ko") === 0 ? "ko" : "en");
+    document.documentElement.setAttribute("data-lang", lang);
+    document.documentElement.lang = lang;
+  })();
+</script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="./"><span class="mark"></span>Synth</a>
+    <button class="lang" id="lang" type="button"><span class="ko">English</span><span class="en">한국어</span></button>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1 class="ko">음악을 틀면,<br><em>배경화면이 영상이 됩니다</em></h1>
+      <h1 class="en">Press play.<br><em>Your wallpaper becomes video.</em></h1>
+      <p class="lead ko">Spotify나 Apple Music에서 곡이 나오는 동안, 그 곡에 건 영상·사진이 맥의 바탕화면에 깔립니다. 음악이 멈추면 원래 배경화면으로 돌아옵니다.</p>
+      <p class="lead en">While a song plays in Spotify or Apple Music, the video or photo set for that song fills your Mac's desktop. When the music stops, your own wallpaper comes back.</p>
+      <a class="cta" href="https://fqheehwemgrlnejwmnby.supabase.co/storage/v1/object/public/releases/Synth.dmg">
+        <span class="ko">맥용 내려받기</span><span class="en">Download for Mac</span>
+      </a>
+      <div class="meta">
+        <span class="ko">무료 · macOS 14.4 이상 · Apple 실리콘·Intel</span>
+        <span class="en">Free · macOS 14.4 or later · Apple silicon &amp; Intel</span>
+        <span id="ver"></span>
+      </div>
+      <div class="screen" aria-hidden="true">
+        <div class="bar"></div>
+        <div class="now"><i></i><b class="ko">지금 재생 중</b><b class="en">Now playing</b><span class="ko">곡에 건 영상이 바탕화면에</span><span class="en">its video is on your desktop</span></div>
+      </div>
+    </div>
+
+    <section>
+      <h2 class="ko">쓰는 법</h2><h2 class="en">How it works</h2>
+      <div class="grid">
+        <div class="card"><div class="num">1</div>
+          <h3 class="ko">음악을 튼다</h3><h3 class="en">Play something</h3>
+          <p class="ko">맥의 Spotify나 Music 앱에서 평소처럼 곡을 틉니다. Synth가 지금 나오는 곡을 알아봅니다.</p>
+          <p class="en">Play a song in Spotify or the Music app on your Mac, as usual. Synth notices what's playing.</p></div>
+        <div class="card"><div class="num">2</div>
+          <h3 class="ko">영상을 건다</h3><h3 class="en">Set a video</h3>
+          <p class="ko">곡·앨범·플레이리스트에 영상이나 사진을 겁니다. 파일을 고르거나, 브라우저에서 보던 페이지를 그대로 가져올 수 있습니다.</p>
+          <p class="en">Attach a video or photo to a song, an album or a playlist — pick a file, or bring in the page you're looking at in your browser.</p></div>
+        <div class="card"><div class="num">3</div>
+          <h3 class="ko">아무것도 안 해도 된다</h3><h3 class="en">Or do nothing</h3>
+          <p class="ko">걸어 둔 것이 없는 곡에서는 다른 사람이 그 곡에 올린 영상이 깔립니다. 그것도 없으면 원래 배경화면 그대로입니다.</p>
+          <p class="en">On songs you haven't set anything for, you get what someone else shared for that song. If there's nothing, your wallpaper stays as it is.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="ko">알아 둘 것</h2><h2 class="en">Good to know</h2>
+      <ul class="plain ko">
+        <li><b>건 영상은 기본으로 공개됩니다.</b> 걸 때 나오는 "모두에게 공개" 상자가 켜져 있고, 끄면 내 맥에만 남습니다. 올릴 권리가 있는 것만 공개해 주세요. 소리는 올라가지 않습니다.</li>
+        <li><b>남이 올린 영상은 미리 검토되지 않습니다.</b> 문제가 있는 것은 앱에서 신고하면 바로 내려갑니다. 저절로 받는 것이 싫으면 설정(<kbd>⌘,</kbd>)에서 끌 수 있습니다.</li>
+        <li><b>듣는 곡은 맥 밖으로 나가지 않습니다.</b> 계정도 없습니다. 사용 통계는 처음 켤 때 묻고, 동의한 사람 것만 익명으로 받습니다.</li>
+        <li><b>잠금 화면에도 나옵니다</b>(macOS 26부터). 전체 화면 앱 위에는 나오지 않습니다.</li>
+        <li><b>켜고 끄기</b>는 앱 창의 스위치나 <kbd>⌃⌥⌘V</kbd>, 종료는 <kbd>⌘Q</kbd>입니다. 창을 닫아도 배경은 계속 나옵니다.</li>
+        <li>브라우저에서 재생하는 음악(웹 플레이어, YouTube)은 알아보지 못합니다. 맥용 Spotify·Music 앱이 필요합니다.</li>
+      </ul>
+      <ul class="plain en">
+        <li><b>What you set is shared by default.</b> The "Share with everyone" box is on when you set a video; turn it off and it stays on your Mac. Only share what you have the right to share. Audio is never uploaded.</li>
+        <li><b>Shared videos aren't reviewed in advance.</b> Report one in the app and it comes down right away. You can turn off automatic downloads in Settings (<kbd>⌘,</kbd>).</li>
+        <li><b>What you listen to stays on your Mac.</b> There's no account. Usage stats are asked about on first launch and only sent, anonymously, if you agree.</li>
+        <li><b>Works on the lock screen too</b> (macOS 26 and later). It doesn't appear over full-screen apps.</li>
+        <li><b>Turn it on and off</b> with the switch in the app window or <kbd>⌃⌥⌘V</kbd>; quit with <kbd>⌘Q</kbd>. Closing the window keeps the wallpaper going.</li>
+        <li>Music playing in a browser (web players, YouTube) isn't detected. You need the Spotify or Music app for Mac.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="ko">설치</h2><h2 class="en">Install</h2>
+      <ul class="plain ko">
+        <li>내려받은 <b>Synth.dmg</b>를 열고 Synth를 응용 프로그램 폴더로 끌어 놓습니다.</li>
+        <li>처음 켜면 macOS가 Spotify(또는 Music)를 제어해도 되는지 한 번 묻습니다. 지금 나오는 곡을 읽는 데 씁니다.</li>
+        <li>새 버전은 앱이 스스로 받아 바꿉니다.</li>
+      </ul>
+      <ul class="plain en">
+        <li>Open <b>Synth.dmg</b> and drag Synth into Applications.</li>
+        <li>On first launch macOS asks once whether Synth may control Spotify (or Music). That's how it reads the current song.</li>
+        <li>The app updates itself.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <nav>
+      <a href="terms.html"><span class="ko">이용약관</span><span class="en">Terms (Korean)</span></a>
+      <a href="privacy.html"><span class="ko">개인정보 처리방침</span><span class="en">Privacy (Korean)</span></a>
+      <a href="mailto:sgim43547@gmail.com"><span class="ko">문의·저작권 신고</span><span class="en">Contact · Copyright reports</span></a>
+    </nav>
+    <p>© 2026 JIPGERIA</p>
+    <p class="ko">Synth는 Spotify, Apple과 제휴하거나 승인받은 제품이 아닙니다. 각 이름은 해당 회사의 상표입니다.</p>
+    <p class="en">Synth is not affiliated with or endorsed by Spotify or Apple. All names are trademarks of their owners.</p>
+  </footer>
+</div>
+<script>
+  document.getElementById("lang").addEventListener("click", function () {
+    var next = document.documentElement.getAttribute("data-lang") === "ko" ? "en" : "ko";
+    document.documentElement.setAttribute("data-lang", next);
+    document.documentElement.lang = next;
+    try { localStorage.setItem("lang", next); } catch (e) {}
+  });
+  // 버전은 앱이 업데이트를 확인할 때 읽는 바로 그 파일에서 읽는다. 못 읽으면 안 보일 뿐이다.
+  fetch("https://fqheehwemgrlnejwmnby.supabase.co/storage/v1/object/public/releases/latest.json", { cache: "no-store" })
+    .then(function (r) { return r.json(); })
+    .then(function (j) { if (/^[0-9.]+$/.test(j.version)) document.getElementById("ver").textContent = " · v" + j.version; })
+    .catch(function () {});
+</script>
+</body>
+</html>

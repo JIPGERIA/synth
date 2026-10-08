@@ -15,7 +15,7 @@ html[data-lang="ko"] .en, html[data-lang="en"] .ko { display: none !important; }
 
 header.top { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; text-decoration: none; }
-.mark { width: 26px; height: 26px; border-radius: 7px; background: linear-gradient(135deg, var(--a), var(--b) 55%, var(--c)); }
+.mark { width: 28px; height: 28px; background: url(icon.png) center / contain no-repeat; }
 .lang { background: none; border: 1px solid var(--line); color: var(--dim); border-radius: 999px; padding: 5px 13px; font: inherit; font-size: 14px; cursor: pointer; }
 .lang:hover { color: var(--text); border-color: var(--dim); }
 
